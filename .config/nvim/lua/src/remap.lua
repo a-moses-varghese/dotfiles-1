@@ -66,7 +66,7 @@ vim.keymap.set("n", "<A-s>", "dw")  -- delete a sentence (after cursor)
 
 -- ACTIONS
 vim.keymap.set("n", "s", function() -- write file (remap s to :w)
-    vim.cmd("w")
+  vim.cmd("w")
 end)
 -- vim.keymap.set("n", "#", "zM") -- delete a word
 

@@ -1,15 +1,44 @@
 -- snippets keymaps
-vim.api.nvim_set_keymap('n', 'rnfes', [[<Cmd>lua InsertRNComponent()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'pfc', [[<Cmd>lua InsertPyFunc()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  'n', 'rnfes', [[<Cmd>lua InsertRNComponent()<CR>]], { noremap = true, silent = true }
+) -- react native functional export (w) styles
+vim.api.nvim_set_keymap(
+  'n', 'pfc', [[<Cmd>lua InsertPyFunc()<CR>]], { noremap = true, silent = true }
+) -- python function (w) comments
+vim.api.nvim_set_keymap(
+  'n', 'cmf', [[<Cmd>lua InsertCFunc()<CR>]], { noremap = true, silent = true }
+) -- c main function
 
 
 
 
 -- snippets full description
 
+-- react native component with style sheet
+function InsertRNComponent()
+  local filename = vim.fn.expand("%:t:r") -- Get the filename without extension
+  local rnComponent = string.format([[
+import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+
+const %s = () => {
+    return (
+        <View>
+            <Text>%s</Text>
+        </View>
+    )
+}
+
+export default %s;
+]], filename, filename, filename)
+
+  -- Insert the formatted string into the buffer
+  vim.api.nvim_put(vim.split(rnComponent, '\n'), '', true, true)
+end
+
 -- python function with documentation strings
 function InsertPyFunc()
-    local pyFunc = string.format([[
+  local pyFunc = string.format([[
 def function_name(param1: str, param2: int) -> bool:
     """
     Brief one-line summary of the function.
@@ -36,26 +65,34 @@ def function_name(param1: str, param2: int) -> bool:
     """
     pass
 ]])
-    vim.api.nvim_put(vim.split(pyFunc, '\n'), '', true, true)
+  vim.api.nvim_put(vim.split(pyFunc, '\n'), '', true, true)
 end
 
--- react native component with style sheet
-function InsertRNComponent()
-    local filename = vim.fn.expand("%:t:r") -- Get the filename without extension
-    local rnComponent = string.format([[
-import { StyleSheet, View, Text } from "react-native";
-import React from "react";
+-- c main function
+function InsertCFunc()
+  local cFunc = [[
+#include <stdio.h>
+#include <stdbool.h>
 
-const %s = () => {
-    return (
-        <View>
-            <Text>%s</Text>
-        </View>
-    )
+bool func(int num) {
+  // Example logic: return true if num is zero
+  return num == 0;
 }
 
-export default %s;
-]], filename, filename, filename)
+int main() {
+  printf("Hello, World!\n");
 
-    vim.api.nvim_put(vim.split(rnComponent, '\n'), '', true, true) -- Insert the formatted string into the buffer
+  int number = 4; // Example number to test
+  if (func(number)) {
+      printf("%d is zero.\n", number);
+  } else {
+      printf("%d is non-zero.\n", number);
+  }
+
+  return 0;
+}
+]]
+
+  -- Insert the formatted string into the buffer
+  vim.api.nvim_put(vim.split(cFunc, '\n'), '', true, true)
 end
