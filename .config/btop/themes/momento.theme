@@ -2,7 +2,7 @@
 #by Moses Varghese
 #Designed with form over function in mind. Blow up your system resources. At least it looks pretty.
 # Color palatte:
-# ff759b (salmon pink), 858ae3 (gray outline), 6868ff (purple), 6dd7ff (pale blue),
+# ff759b (salmon pink), 858ae3 (gray outline), 6868ff (purple), 6dd7ff (pale blue), ea6398 (pale salmon)
 
 # Main background, empty for terminal default, need to be empty if you want transparent background
 theme[main_bg]="#000000"
@@ -60,24 +60,24 @@ theme[cpu_mid]="#6dd7ff"
 theme[cpu_end]="#6dd7ff"
 
 # Mem/Disk free meter
-theme[free_end]="#6868ff"
-theme[free_mid]="#6868ff"
-theme[free_start]="#6868ff"
+theme[free_end]="#ea6398"
+theme[free_mid]="#ea6398"
+theme[free_start]="#ea6398"
 
 # Mem/Disk cached meter
-theme[cached_start]="#6868ff"
-theme[cached_mid]="#6868ff"
-theme[cached_end]="#6868ff"
+theme[cached_start]="#ea6398"
+theme[cached_mid]="#ea6398"
+theme[cached_end]="#ea6398"
 
 # Mem/Disk available meter
-theme[available_start]="#6868ff"
-theme[available_mid]="#6868ff"
-theme[available_end]="#6868ff"
+theme[available_start]="#ea6398"
+theme[available_mid]="#ea6398"
+theme[available_end]="#ea6398"
 
 # Mem/Disk used meter
-theme[used_start]="#6868ff"
-theme[used_mid]="#6868ff"
-theme[used_end]="#6868ff"
+theme[used_start]="#ea6398"
+theme[used_mid]="#ea6398"
+theme[used_end]="#ea6398"
 
 # Download graph colors
 theme[download_start]="#6dd7ff"
@@ -85,9 +85,9 @@ theme[download_mid]="#6dd7ff"
 theme[download_end]="#6dd7ff"
 
 # Upload graph colors
-theme[upload_start]="#6868ff"
-theme[upload_mid]="#6868ff"
-theme[upload_end]="#6868ff"
+theme[upload_start]="#ea6398"
+theme[upload_mid]="#ea6398"
+theme[upload_end]="#ea6398"
 
 # Process box color gradient for threads, mem and cpu usage
 theme[process_start]="#d1d1e0"
