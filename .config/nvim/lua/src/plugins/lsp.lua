@@ -41,9 +41,11 @@ return {
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.clangd.setup({ capabilities = capabilities })
             lspconfig.zls.setup({ capabilities = capabilities })
+
+            -- automation
             lspconfig.pyright.setup({ capabilities = capabilities })
 
-            -- Web Development (React, TypeScript, JavaScript)
+            -- Web Development
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
                 filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Ensure React file types are supported
@@ -53,8 +55,6 @@ return {
                     client.server_capabilities.documentFormattingProvider = false
                 end,
             })
-
-            -- ESLint for linting React projects
             lspconfig.eslint.setup({
                 capabilities = capabilities,
                 filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Enable for React
@@ -65,8 +65,6 @@ return {
                     })
                 end,
             })
-
-            -- TailwindCSS setup
             lspconfig.tailwindcss.setup({ capabilities = capabilities })
 
             -- misc

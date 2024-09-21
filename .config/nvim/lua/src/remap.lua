@@ -36,11 +36,15 @@ vim.keymap.set("n", "0", "$") -- move to enddd of line
 -- vim.keymap.set({ "n", "v" }, "j", "k") -- reverse direction up
 -- vim.keymap.set({ "n", "v" }, "k", "j") -- reverse direction down
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz") -- move down half page + cursor position fixed
+vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position fixed
+
 -- INSERT
 
 -- MODIFY
-vim.keymap.set("n", "<C-x>", "ydd")  -- cut selection
-vim.keymap.set("n", "<C-v>", '"+pe') -- paste from clipboard
+vim.keymap.set("n", "<C-x>", "ydd")                -- cut selection
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- copy to clipboard (thanku prime + asbjornHaland)
+vim.keymap.set("n", "<C-v>", '"+pe')               -- paste from clipboard
 -- vim.keymap.set("n", "<A-Down>", "Vyddp") -- move line down
 
 vim.keymap.set("n", "<A-Up>", "ddkP")        -- move line uppp
@@ -61,9 +65,13 @@ vim.keymap.set("n", "<A-s>", "dw")  -- delete a sentence (after cursor)
 -- FILES / FOLDERS
 
 -- ACTIONS
+vim.keymap.set("n", "s", function() -- write file (remap s to :w)
+    vim.cmd("w")
+end)
 -- vim.keymap.set("n", "#", "zM") -- delete a word
 
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on
+vim.keymap.set("n", "<C-r>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on
 
 -- MISC
+vim.keymap.set("i", "<C-c>", "<esc>") -- ctrl+c to esc
