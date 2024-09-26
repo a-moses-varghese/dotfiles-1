@@ -45,16 +45,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position 
 vim.keymap.set("n", "<C-x>", "ydd")                -- cut selection
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- copy to clipboard (thanku prime + asbjornHaland)
 vim.keymap.set("n", "<C-v>", '"+pe')               -- paste from clipboard
--- vim.keymap.set("n", "<A-Down>", "Vyddp") -- move line down
 
-vim.keymap.set("n", "<A-Up>", "ddkP")        -- move line uppp
-vim.keymap.set("n", "<A-Down>", "Vyddp")     -- move line down
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected code in visual mode (down)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move selected code in visual mode (up)
-
--- vim.keymap.set("n", "<A-Up>", "xkP")  -- move selection uppp
--- vim.keymap.set("n", "<A-Down>", "xp") -- move selection down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")       -- move selected code in visual mode (down)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")       -- move selected code in visual mode (up)
 
 -- DELETE
 vim.keymap.set("n", "<A-d>", "diw") -- delete a word
@@ -63,15 +56,14 @@ vim.keymap.set("n", "<A-s>", "dw")  -- delete a sentence (after cursor)
 -- VARIABLES
 
 -- FILES / FOLDERS
+vim.keymap.set("n", "s", function() -- write file (remap s to :w)
+    vim.cmd("w")
+end)
 
 -- ACTIONS
-vim.keymap.set("n", "s", function() -- write file (remap s to :w)
-  vim.cmd("w")
-end)
--- vim.keymap.set("n", "#", "zM") -- delete a word
 
 
-vim.keymap.set("n", "<C-r>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on
+vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on
 
 -- MISC
 vim.keymap.set("i", "<C-c>", "<esc>") -- ctrl+c to esc

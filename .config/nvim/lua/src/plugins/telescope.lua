@@ -6,17 +6,24 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
 
     config = function()
-      require('telescope').setup({})
+      require('telescope').setup({
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules",
+            "target",
+          }
+        }
+      })
 
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})         -- space+space to search for file names
       vim.keymap.set('n', '<leader>f', builtin.live_grep, {})                 -- space+f to search string across all files
       vim.keymap.set('n', '<leader>d', builtin.current_buffer_fuzzy_find, {}) -- space+d to search string across current file (buffer)
-      vim.keymap.set('n', 'hf', function()
+      vim.keymap.set('n', '<leader>j', function()
         require('telescope.builtin').buffers { sort_lastused = true }
       end
       ) -- list open buffers
-      vim.keymap.set('n', 'hh', function()
+      vim.keymap.set('n', 'mm', function()
         require('telescope.builtin').buffers { sort_lastused = true }
         -- Delay the Enter key press slightly to allow Telescope to open
         vim.defer_fn(function()
