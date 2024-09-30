@@ -6,8 +6,11 @@ vim.api.nvim_set_keymap(
   'n', 'pfc', [[<Cmd>lua InsertPyFunc()<CR>]], { noremap = true, silent = true }
 ) -- python function (w) comments
 vim.api.nvim_set_keymap(
-  'n', 'cmf', [[<Cmd>lua InsertCFunc()<CR>]], { noremap = true, silent = true }
-) -- c main function
+  'n', 'cmo', [[<Cmd>lua InsertCFunc()<CR>]], { noremap = true, silent = true }
+) -- c main function only
+vim.api.nvim_set_keymap(
+  'n', 'cmfm', [[<Cmd>lua InsertCFuncMeth()<CR>]], { noremap = true, silent = true }
+) -- c main function with method
 
 
 
@@ -38,7 +41,7 @@ end
 
 -- python function with documentation strings
 function InsertPyFunc()
-  local pyFunc = string.format([[
+  local func = string.format([[
 def function_name(param1: str, param2: int) -> bool:
     """
     Brief one-line summary of the function.
@@ -65,12 +68,28 @@ def function_name(param1: str, param2: int) -> bool:
     """
     pass
 ]])
-  vim.api.nvim_put(vim.split(pyFunc, '\n'), '', true, true)
+  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
 end
 
 -- c main function
 function InsertCFunc()
-  local cFunc = [[
+  local func = [[
+#include <stdio.h>
+
+int main() {
+  printf("Hello, World!\n");
+
+  return 0;
+}
+]]
+
+  -- Insert the formatted string into the buffer
+  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
+end
+
+-- c main function
+function InsertCFuncMeth()
+  local func = [[
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -94,5 +113,5 @@ int main() {
 ]]
 
   -- Insert the formatted string into the buffer
-  vim.api.nvim_put(vim.split(cFunc, '\n'), '', true, true)
+  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
 end
