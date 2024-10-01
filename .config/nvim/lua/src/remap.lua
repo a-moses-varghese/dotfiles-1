@@ -46,8 +46,11 @@ vim.keymap.set("n", "s", function() -- write file (remap s to :w)
 end)
 
 -- ACTIONS
-vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)                                    -- quit all
-vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts)                        -- open side panel
+vim.keymap.set("n", "<Leader>w", ":q<Return>", opts)              -- quit
+vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)             -- quit all
+vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts) -- open side panel
+
+vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)
 
 vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on
 
