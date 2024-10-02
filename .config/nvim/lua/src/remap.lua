@@ -46,13 +46,21 @@ vim.keymap.set("n", "s", function() -- write file (remap s to :w)
 end)
 
 -- ACTIONS
-vim.keymap.set("n", "<Leader>w", ":q<Return>", opts)              -- quit
-vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)             -- quit all
-vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts) -- open side panel
+vim.keymap.set("i", "C-c", "<esc>", opts)                                                -- esc in insert mode
+vim.keymap.set({ "n", "v" }, "<Leader>w", ":q<Return>", opts)                            -- quit
+vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)                                    -- quit all
+vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts)                        -- open side panel
 
-vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)
+vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)                               -- lazy update
 
-vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on
+vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on (prime)
+
+-- split screen: Map leader + l to perform :vert topleft split
+vim.keymap.set('n', '<leader>l', ':vert topleft split<CR>', { noremap = true, silent = true })
+-- Move to the left split with ; + ;
+vim.keymap.set('n', ';;', '<C-w>h', { noremap = true, silent = true })
+-- Move to the right split with ' + '
+vim.keymap.set('n', "''", '<C-w>l', { noremap = true, silent = true })
 
 -- MISC
 -- vim.keymap.set("i", "<Leader>y", "<esc>") -- space+y to esc

@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-  background-color: rgba(13, 14, 15, 0.8);
+  background-color: rgba(13, 14, 15, 0.6);
   color: #c4c4c4;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -84,7 +84,8 @@ button:hover {
 } */
 
 #battery.charging {
-  color: #0087ff;
+  /* color: #0087ff; */
+  color: #ea6398;
 }
 
 #clock {
