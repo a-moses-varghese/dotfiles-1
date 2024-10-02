@@ -5,7 +5,6 @@ vim.opt.relativenumber = true -- use relative line number
 
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
@@ -13,6 +12,3 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 
 vim.opt.scrolloff = 8
-
--- add format on save
--- add other options

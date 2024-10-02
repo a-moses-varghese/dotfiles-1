@@ -1,21 +1,6 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
--- local kp = vim.keymap -- remap vim.keymap to just kp
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
-
--- TODO
--- real copy paste cut actions
--- move line(s) up / down
--- switch tabs
--- delete folders
--- any other cool keymaps??E
-
-
--- NEW SETUP
 
 -- NAVIGATION
 vim.keymap.set("n", "<leader>1", "^")   -- move to start of line (first non-empty chracter)
@@ -46,14 +31,14 @@ vim.keymap.set("n", "s", function() -- write file (remap s to :w)
 end)
 
 -- ACTIONS
-vim.keymap.set("i", "C-c", "<esc>", opts)                                                -- esc in insert mode
-vim.keymap.set({ "n", "v" }, "<Leader>w", ":q<Return>", opts)                            -- quit
-vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)                                    -- quit all
-vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts)                        -- open side panel
+vim.keymap.set("i", "C-c", "<esc>", opts)                         -- esc in insert mode
+vim.keymap.set({ "n", "v" }, "<Leader>w", ":q<Return>", opts)     -- quit
+vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)             -- quit all
+vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts) -- open side panel
 
-vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)                               -- lazy update
-
-vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word cursor is on (prime)
+vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)        -- lazy update
+-- replace word cursor is on (prime)
+vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- split screen: Map leader + l to perform :vert topleft split
 vim.keymap.set('n', '<leader>l', ':vert topleft split<CR>', { noremap = true, silent = true })
@@ -63,4 +48,7 @@ vim.keymap.set('n', ';;', '<C-w>h', { noremap = true, silent = true })
 vim.keymap.set('n', "''", '<C-w>l', { noremap = true, silent = true })
 
 -- MISC
--- vim.keymap.set("i", "<Leader>y", "<esc>") -- space+y to esc
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+vim.keymap.set("n", "gD", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
