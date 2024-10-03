@@ -8,7 +8,7 @@ Desc
 
 Check out my [website](link) for more info -->
 
-### Tooling
+## Tooling
 
 - [Hyprland](https://hyprland.org/) for window tiling
 - [hyprpaper](https://wiki.hyprland.org/Hypr-Ecosystem/hyprpaper/) for wallpaper
@@ -20,7 +20,34 @@ Check out my [website](link) for more info -->
 - [Neovim](https://neovim.io/) for software development
 - [wallpaper](assets/wallpaper/luffy-kaido.jpg) (or find one [here](https://github.com/MosesDVarghese/Wallpapers))
 
-### Sample Images
+## Installation
+
+TODO
+
+<details>
+<summary>Neovim</summary>
+
+Clone the repo into your home directory
+
+```bash
+git clone https://github.com/reponame/nvimdots-1 ~/nvimdots-1
+```
+
+Remove the git folder
+
+```bash
+rm -rf ~/nvimdots-1/.git
+```
+
+Then copy the neovim config to your neovim config location.
+
+```bash
+cp -r ~/nvimdots-1/.config/nvim ~/.config/nvim
+```
+
+</details>
+
+## Sample Images
 
 TODO
 
@@ -56,6 +83,6 @@ I prefer [GNOME](https://www.gnome.org/)'s minimalistic status bar and have trie
 <img src="assets/images/wofi.png">
 </details> -->
 
-### Contact
+## Contact
 
 You can reach out to me on Discord, @omu9f.
