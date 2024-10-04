@@ -11,6 +11,12 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   'n', 'cmfm', [[<Cmd>lua InsertCFuncMeth()<CR>]], { noremap = true, silent = true }
 ) -- c main function with method
+vim.api.nvim_set_keymap(
+  'n', 'cps', [[<Cmd>lua InsertCPrnt()<CR>]], { noremap = true, silent = true }
+) -- c print statement
+vim.api.nvim_set_keymap(
+  'n', 'cfl', [[<Cmd>lua InsertCFor()<CR>]], { noremap = true, silent = true }
+) -- c for loop
 
 
 
@@ -110,6 +116,28 @@ int main() {
 
   return 0;
 }
+]]
+
+  -- Insert the formatted string into the buffer
+  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
+end
+
+-- c print statement
+function InsertCPrnt()
+  local func = [[
+  printf("%d \n", s);
+]]
+
+  -- Insert the formatted string into the buffer
+  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
+end
+
+-- c for loop
+function InsertCFor()
+  local func = [[
+  for (int i=0; i<sumn; i++) {
+    printf("%d \n", s);
+  }
 ]]
 
   -- Insert the formatted string into the buffer
