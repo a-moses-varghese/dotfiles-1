@@ -10,14 +10,14 @@ rm -rf ~/.config/nvim/*
 
 # Step 3: Clone the dotfiles repository
 echo "Cloning dotfiles repository..."
-git clone https://github.com/MosesDVarghese/dotfiles-1 ~/backups9m/dotfiles-1
+git clone https://github.com/MosesDVarghese/dotfiles-1 ~/dotfiles-1
 
 # Step 4: Remove the .git folder from the cloned repository
 echo "Removing .git folder from cloned repository..."
-rm -rf ~/backups9m/dotfiles-1/.git
+rm -rf ~/dotfiles-1/.git
 
 # Step 5: Copy the Neovim config from the cloned repo to the Neovim config location
 echo "Copying new Neovim configuration..."
-cp -r ~/backups9m/dotfiles-1/.config/nvim ~/.config
+cp -r ~/dotfiles-1/.config/nvim ~/.config
 
 echo "Process complete!"
