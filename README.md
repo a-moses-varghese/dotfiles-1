@@ -30,7 +30,7 @@ TODO
 Clone the repo into your home directory
 
 ```bash
-git clone https://github.com/reponame/nvimdots-1 ~/nvimdots-1
+git clone https://github.com/MosesDVarghese/nvimdots-1 ~/nvimdots-1
 ```
 
 Remove the git folder
