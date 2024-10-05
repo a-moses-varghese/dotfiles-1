@@ -42,7 +42,7 @@ rm -rf ~/dotfiles-1/.git
 Then copy the neovim config to your neovim config location.
 
 ```bash
-cp -r ~/dotfiles-1/.config/nvim ~/.config/nvim
+cp -r ~/dotfiles-1/.config/nvim ~/.config
 ```
 
 </details>
