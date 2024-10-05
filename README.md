@@ -30,19 +30,19 @@ TODO
 Clone the repo into your home directory
 
 ```bash
-git clone https://github.com/MosesDVarghese/nvimdots-1 ~/nvimdots-1
+git clone https://github.com/MosesDVarghese/dotfiles-1 ~/nvimdots-1
 ```
 
 Remove the git folder
 
 ```bash
-rm -rf ~/nvimdots-1/.git
+rm -rf ~/dotfiles-1/.git
 ```
 
 Then copy the neovim config to your neovim config location.
 
 ```bash
-cp -r ~/nvimdots-1/.config/nvim ~/.config/nvim
+cp -r ~/dotfiles-1/.config/nvim ~/.config/nvim
 ```
 
 </details>
