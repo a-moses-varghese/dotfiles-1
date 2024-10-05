@@ -10,7 +10,7 @@ rm -rf ~/.config/nvim/*
 
 # Step 3: Clone the dotfiles repository
 echo "Cloning dotfiles repository..."
-git clone https://github.com/name/dotfiles-1 ~/backups9m/dotfiles-1
+git clone https://github.com/MosesDVarghese/dotfiles-1 ~/backups9m/dotfiles-1
 
 # Step 4: Remove the .git folder from the cloned repository
 echo "Removing .git folder from cloned repository..."
