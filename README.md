@@ -34,6 +34,10 @@ git clone https://github.com/MosesDVarghese/dotfiles-1 ~/dotfiles-1
 then use the installation script from this repo:
 
 ```bash
+cd dotfiles-1/
+```
+
+```bash
 sh getnvimcfg.sh
 ```
 
