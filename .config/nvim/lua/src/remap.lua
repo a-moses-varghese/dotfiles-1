@@ -3,8 +3,8 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
 -- NAVIGATION
-vim.keymap.set("n", "<leader>1", "^")   -- move to start of line (first non-empty chracter)
-vim.keymap.set("n", "<leader>2", "$")   -- move to enddd of line
+vim.keymap.set("n", "<C-1>", "^")       -- move to start of line (first non-empty chracter)
+vim.keymap.set("n", "<C-2>", "$")       -- move to enddd of line
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- move down half page + cursor position fixed
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position fixed
@@ -21,19 +21,7 @@ end) -- jump to end of line in insert mode
 
 
 -- INSERT
-vim.keymap.set('n', '<C-,>', function()
-  local line = vim.api.nvim_get_current_line()
-  if vim.startswith(line:match("^%s*(.*)"), "// ") then
-    local new_line = line:gsub("^(%s*)// ", "%1", 1)
-    vim.api.nvim_set_current_line(new_line)
-  else
-    local new_line = line:gsub("^(%s*)", "%1// ")
-    vim.api.nvim_set_current_line(new_line)
-  end
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-end)
-
-vim.keymap.set('n', '<C-.>', function()
+vim.keymap.set('n', '<C-m>', function()
   local line = vim.api.nvim_get_current_line()
   local filetype = vim.bo.filetype
 
@@ -46,27 +34,57 @@ vim.keymap.set('n', '<C-.>', function()
     comment_prefix = "// "
   end
 
-  -- Check if the line starts with the appropriate comment prefix
   if vim.startswith(line:match("^%s*(.*)"), comment_prefix) then
-    -- Remove the comment prefix from the line
     local new_line = line:gsub("^(%s*)" .. vim.pesc(comment_prefix), "%1", 1)
     vim.api.nvim_set_current_line(new_line)
   else
-    -- Add the comment prefix at the beginning of the first non-whitespace character
     local new_line = line:gsub("^(%s*)", "%1" .. comment_prefix)
     vim.api.nvim_set_current_line(new_line)
   end
-
-  -- Move to normal mode
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-end)
+end) -- single line comment
 
+vim.keymap.set('v', '<C-,>', function()
+  local filetype = vim.bo.filetype
 
+  local comment_prefix = ""
+  if filetype == "python" then
+    comment_prefix = "#"
+  elseif filetype == "lua" then
+    comment_prefix = "--"
+  else
+    comment_prefix = "//"
+  end
+
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("I", true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(comment_prefix, true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end) -- multi-line comment w visual block mode
+
+vim.keymap.set('v', '<C-.>', function()
+  local filetype = vim.bo.filetype
+
+  local comment_prefix = ""
+  local jump_setp = 0
+  if filetype == "python" then
+    comment_prefix = "#"
+  elseif filetype == "lua" then
+    comment_prefix = "--"
+  else
+    comment_prefix = "//"
+  end
+
+  for i = 1, jump_setp do
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Right>", true, false, true), 'n', false)
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("x", true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end) -- multi-line uncomment with visual block mode
 
 -- MODIFY
-vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
-vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
-vim.keymap.set("n", "<C-v>", '"+pe')           -- paste from system clipboard
+-- vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
+vim.keymap.set({ "n", "v" }, "<C-x>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
+vim.keymap.set("n", "<C-c>", '"+pe')           -- paste from system clipboard
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")   -- move selected code in visual mode (down)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")   -- move selected code in visual mode (up)
