@@ -2,7 +2,7 @@
 
 # My dotfiles
 
-Desc
+The configuration I use to make a minimal and productive arch linux system.
 
 <!-- ### Plug
 
@@ -22,8 +22,6 @@ Check out my [website](link) for more info -->
 
 ## Installation
 
-TODO
-
 <details>
 <summary>Neovim</summary>
 
@@ -33,17 +31,13 @@ Clone the repo into your home directory
 git clone https://github.com/MosesDVarghese/dotfiles-1 ~/dotfiles-1
 ```
 
-Remove the git folder
+then use the installation script from this repo:
 
 ```bash
-rm -rf ~/dotfiles-1/.git
+sh getnvimcfg.sh
 ```
 
-Then copy the neovim config to your neovim config location.
-
-```bash
-cp -r ~/dotfiles-1/.config/nvim ~/.config
-```
+You won't lose your previous config. The script creates a backup of your old neovim config in a folder called backups9m/nvim in your home directory.
 
 </details>
 

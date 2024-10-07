@@ -16,4 +16,4 @@ rm -rf ~/dotfiles-1/.git
 echo "Copying new Neovim configuration..."
 cp -r ~/dotfiles-1/.config/nvim ~/.config
 
-echo "Process complete!"
+echo "Neovim setup complete!"
