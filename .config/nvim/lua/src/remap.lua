@@ -9,7 +9,59 @@ vim.keymap.set("n", "<leader>2", "$")   -- move to enddd of line
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- move down half page + cursor position fixed
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position fixed
 
+vim.keymap.set('i', '<C-s>', function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("^", true, false, true), 'n', false)
+end) -- jump to start of line in insert mode
+
+vim.keymap.set('i', '<C-e>', function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("$", true, false, true), 'n', false)
+end) -- jump to end of line in insert mode
+
+
 -- INSERT
+vim.keymap.set('n', '<C-,>', function()
+  local line = vim.api.nvim_get_current_line()
+  if vim.startswith(line:match("^%s*(.*)"), "// ") then
+    local new_line = line:gsub("^(%s*)// ", "%1", 1)
+    vim.api.nvim_set_current_line(new_line)
+  else
+    local new_line = line:gsub("^(%s*)", "%1// ")
+    vim.api.nvim_set_current_line(new_line)
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end)
+
+vim.keymap.set('n', '<C-.>', function()
+  local line = vim.api.nvim_get_current_line()
+  local filetype = vim.bo.filetype
+
+  local comment_prefix = ""
+  if filetype == "python" then
+    comment_prefix = "# "
+  elseif filetype == "lua" then
+    comment_prefix = "-- "
+  else
+    comment_prefix = "// "
+  end
+
+  -- Check if the line starts with the appropriate comment prefix
+  if vim.startswith(line:match("^%s*(.*)"), comment_prefix) then
+    -- Remove the comment prefix from the line
+    local new_line = line:gsub("^(%s*)" .. vim.pesc(comment_prefix), "%1", 1)
+    vim.api.nvim_set_current_line(new_line)
+  else
+    -- Add the comment prefix at the beginning of the first non-whitespace character
+    local new_line = line:gsub("^(%s*)", "%1" .. comment_prefix)
+    vim.api.nvim_set_current_line(new_line)
+  end
+
+  -- Move to normal mode
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end)
+
+
 
 -- MODIFY
 vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
