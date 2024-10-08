@@ -12,3 +12,7 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 
 vim.opt.scrolloff = 8
+
+-- these highlight the line num the cursor is on
+vim.opt.cul = true
+vim.opt.culopt = "number"
