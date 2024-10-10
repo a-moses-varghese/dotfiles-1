@@ -25,8 +25,8 @@ end) -- jump to end of line in insert mode
 
 -- MODIFY
 -- vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
-vim.keymap.set({ "n", "v" }, "<C-x>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
-vim.keymap.set("n", "<C-c>", '"+pe')           -- paste from system clipboard
+vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
+vim.keymap.set("n", "<C-x>", '"+pe')           -- paste from system clipboard
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")   -- move selected code in visual mode (down)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")   -- move selected code in visual mode (up)

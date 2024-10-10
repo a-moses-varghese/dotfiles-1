@@ -62,3 +62,26 @@ vim.keymap.set('v', '<C-.>', function()
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("x", true, false, true), 'n', false)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 end) -- multi-line uncomment with visual block mode (assumes // is the main way to comment)
+
+-- ACTIONS
+vim.keymap.set('n', 'z', function()
+  local current_line = vim.fn.line('.')
+  local is_folded = vim.fn.foldclosed(current_line)
+
+  if is_folded ~= -1 then
+    vim.cmd('normal! zo')
+  else
+    vim.cmd('normal! zc')
+  end
+end, { noremap = true, silent = true }) -- toggle fold for current code block
+
+vim.keymap.set('n', 'Z', function()
+  local foldlevel = vim.api.nvim_eval('foldlevel(".")') -- Check the current fold level
+
+  if foldlevel > 0 then
+    vim.cmd('normal! zR')
+  else
+    vim.cmd('normal! zM')
+  end
+end, { noremap = true, silent = true }) -- toggle fold for all code blocks
+

@@ -16,3 +16,9 @@ vim.opt.scrolloff = 8
 -- these highlight the line num the cursor is on
 vim.opt.cul = true
 vim.opt.culopt = "number"
+
+-- folding
+vim.opt.foldmethod = 'indent'
+vim.opt.foldenable = false  -- Automatically enable folding when opening files
+vim.opt.foldlevel = 99      -- prevent all folds from closing
+
