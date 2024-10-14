@@ -1,28 +1,28 @@
 -- some remaps are lengthy and can cause clutter so we'll put them in this file
 
 -- INSERT
--- vim.keymap.set('n', '<C-m>', function()
---   local line = vim.api.nvim_get_current_line()
---   local filetype = vim.bo.filetype
+vim.keymap.set('n', '<C-m>', function()
+  local line = vim.api.nvim_get_current_line()
+  local filetype = vim.bo.filetype
 
---   local comment_prefix = ""
---   if filetype == "python" then
---     comment_prefix = "# "
---   elseif filetype == "lua" then
---     comment_prefix = "-- "
---   else
---     comment_prefix = "// "
---   end
+  local comment_prefix = ""
+  if filetype == "python" then
+    comment_prefix = "# "
+  elseif filetype == "lua" then
+    comment_prefix = "-- "
+  else
+    comment_prefix = "// "
+  end
 
---   if vim.startswith(line:match("^%s*(.*)"), comment_prefix) then
---     local new_line = line:gsub("^(%s*)" .. vim.pesc(comment_prefix), "%1", 1)
---     vim.api.nvim_set_current_line(new_line)
---   else
---     local new_line = line:gsub("^(%s*)", "%1" .. comment_prefix)
---     vim.api.nvim_set_current_line(new_line)
---   end
---   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
--- end) -- single line comment (supports //, --, and #, assumes // is the main way to comment)
+  if vim.startswith(line:match("^%s*(.*)"), comment_prefix) then
+    local new_line = line:gsub("^(%s*)" .. vim.pesc(comment_prefix), "%1", 1)
+    vim.api.nvim_set_current_line(new_line)
+  else
+    local new_line = line:gsub("^(%s*)", "%1" .. comment_prefix)
+    vim.api.nvim_set_current_line(new_line)
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end) -- single line comment (supports //, --, and #, assumes // is the main way to comment)
 -- or just press enter bruh
 
 vim.keymap.set('v', '<C-,>', function()

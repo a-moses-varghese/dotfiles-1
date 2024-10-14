@@ -43,7 +43,17 @@ return {
       lspconfig.zls.setup({ capabilities = capabilities })
 
       -- automation
-      lspconfig.pyright.setup({ capabilities = capabilities })
+      -- lspconfig.pyright.setup({ capabilities = capabilities })
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "off", -- or "basic" for some type checking
+            },
+          },
+        },
+      })
 
       -- Web Development
       lspconfig.ts_ls.setup({
