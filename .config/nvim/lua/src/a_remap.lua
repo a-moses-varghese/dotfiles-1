@@ -48,7 +48,7 @@ vim.keymap.set({ "n", "v" }, "<Leader>w", ":q<Return>", opts)     -- quit
 vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)             -- quit all
 vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts) -- open side panel
 
-vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)        -- lazy update
+vim.keymap.set("n", "<C-CR>", ":Lazy update<CR>", opts)           -- lazy update
 -- replace word cursor is on (prime)
 vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
