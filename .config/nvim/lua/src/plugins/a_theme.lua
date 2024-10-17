@@ -19,7 +19,7 @@ return {
         },
       })
       -- set the colorscheme
-      vim.cmd [[colorscheme tokyonight]]
+      vim.cmd.colorscheme("tokyonight")
     end
   },
   {
@@ -33,4 +33,18 @@ return {
       -- vim.cmd.colorscheme("sonokai")
     end,
   },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        transparent_background = true,
+        flavour = "mocha",
+        no_italic = true,
+      })
+      -- set the colorscheme
+      -- vim.cmd.colorscheme("catppuccin")
+    end
+  }
 }
