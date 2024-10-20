@@ -24,12 +24,12 @@ end) -- jump to end of line in insert mode
 -- add something here
 
 -- MODIFY
--- vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
+vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
 vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
-vim.keymap.set("n", "<C-x>", '"+pe')           -- paste from system clipboard
+-- vim.keymap.set("n", "<C-x>", '"+pe')           -- paste from system clipboard
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")   -- move selected code in visual mode (down)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")   -- move selected code in visual mode (up)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected code in visual mode (down)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move selected code in visual mode (up)
 
 -- DELETE
 vim.keymap.set("n", "<A-d>", "diw") -- delete a word
@@ -48,7 +48,7 @@ vim.keymap.set({ "n", "v" }, "<Leader>w", ":q<Return>", opts)     -- quit
 vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)             -- quit all
 vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts) -- open side panel
 
-vim.keymap.set("n", "<C-CR>", ":Lazy update<CR>", opts)           -- lazy update
+vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts)        -- lazy update
 -- replace word cursor is on (prime)
 vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
