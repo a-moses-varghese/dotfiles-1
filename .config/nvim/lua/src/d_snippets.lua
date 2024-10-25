@@ -8,17 +8,6 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   'n', 'cmo', [[<Cmd>lua InsertCFunc()<CR>]], { noremap = true, silent = true }
 ) -- c main function only
-vim.api.nvim_set_keymap(
-  'n', 'cmfm', [[<Cmd>lua InsertCFuncMeth()<CR>]], { noremap = true, silent = true }
-) -- c main function with method
-vim.api.nvim_set_keymap(
-  'n', 'cps', [[<Cmd>lua InsertCPrnt()<CR>]], { noremap = true, silent = true }
-) -- c print statement
-vim.api.nvim_set_keymap(
-  'n', 'cfl', [[<Cmd>lua InsertCFor()<CR>]], { noremap = true, silent = true }
-) -- c for loop
-
-
 
 
 -- snippets full description
@@ -93,53 +82,3 @@ int main() {
   vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
 end
 
--- c main function
-function InsertCFuncMeth()
-  local func = [[
-#include <stdio.h>
-#include <stdbool.h>
-
-bool func(int num) {
-  // Example logic: return true if num is zero
-  return num == 0;
-}
-
-int main() {
-  printf("Hello, World!\n");
-
-  int number = 4; // Example number to test
-  if (func(number)) {
-      printf("%d is zero.\n", number);
-  } else {
-      printf("%d is non-zero.\n", number);
-  }
-
-  return 0;
-}
-]]
-
-  -- Insert the formatted string into the buffer
-  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
-end
-
--- c print statement
-function InsertCPrnt()
-  local func = [[
-  printf("%d \n", s);
-]]
-
-  -- Insert the formatted string into the buffer
-  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
-end
-
--- c for loop
-function InsertCFor()
-  local func = [[
-  for (int i=0; i<sumn; i++) {
-    printf("%d \n", s);
-  }
-]]
-
-  -- Insert the formatted string into the buffer
-  vim.api.nvim_put(vim.split(func, '\n'), '', true, true)
-end

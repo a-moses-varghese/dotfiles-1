@@ -23,7 +23,7 @@ return {
         require('telescope.builtin').buffers { sort_lastused = true }
       end
       ) -- list open buffers
-      vim.keymap.set('n', 'mm', function()
+      vim.keymap.set('n', 'm', function()
         require('telescope.builtin').buffers { sort_lastused = true }
         -- Delay the Enter key press slightly to allow Telescope to open
         vim.defer_fn(function()
