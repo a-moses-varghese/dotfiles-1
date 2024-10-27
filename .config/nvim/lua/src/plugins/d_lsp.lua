@@ -8,11 +8,12 @@ return {
           "rust-analyzer",
           "clangd",
           "zls",
+          "gopls",
           "pyright",
           "css-lsp",
           "typescript-language-server",
           "tailwindcss-language-server",
-          "eslint-lsp"
+          "eslint-lsp",
         },
       })
     end,
@@ -41,6 +42,20 @@ return {
       lspconfig.rust_analyzer.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.zls.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+            },
+          },
+        },
+      })
 
       -- automation
       -- lspconfig.pyright.setup({ capabilities = capabilities })

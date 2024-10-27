@@ -19,6 +19,15 @@ vim.opt.culopt = "number"
 
 -- folding
 vim.opt.foldmethod = 'indent'
-vim.opt.foldenable = false  -- Automatically enable folding when opening files
-vim.opt.foldlevel = 99      -- prevent all folds from closing
+vim.opt.foldenable = false -- Automatically enable folding when opening files
+vim.opt.foldlevel = 99     -- prevent all folds from closing
 
+-- go specific options, there's probably a better way but i'm lazy rn
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.bo.expandtab = false -- Use tabs instead of spaces
+    vim.bo.shiftwidth = 4    -- Set the width for auto-indents to 4
+    vim.bo.tabstop = 4       -- Set the tab width to 4 spaces
+  end,
+})
