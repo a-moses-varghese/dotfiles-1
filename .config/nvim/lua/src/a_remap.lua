@@ -3,33 +3,19 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
 -- NAVIGATION
-vim.keymap.set("n", "<C-1>", "^")       -- move to start of line (first non-empty chracter)
-vim.keymap.set("n", "<C-2>", "$")       -- move to enddd of line
-
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- move down half page + cursor position fixed
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position fixed
-
-vim.keymap.set('i', '<C-s>', function()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), 'n', false)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("^", true, false, true), 'n', false)
-end) -- jump to start of line in insert mode
-
-vim.keymap.set('i', '<C-e>', function()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), 'n', false)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("$", true, false, true), 'n', false)
-end) -- jump to end of line in insert mode
-
 
 -- INSERT
 -- add something here
 
 -- MODIFY
-vim.keymap.set("n", "<C-x>", "ydd")            -- cut selection
+vim.keymap.set("v", "<C-x>", "ydd")            -- cut selection
 vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
--- vim.keymap.set("n", "<C-x>", '"+pe')           -- paste from system clipboard
+vim.keymap.set("n", "<leader>y", '"+pe')       -- paste from system clipboard
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected code in visual mode (down)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move selected code in visual mode (up)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")   -- move selected code in visual mode (down)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")   -- move selected code in visual mode (up)
 
 -- DELETE
 vim.keymap.set("n", "<A-d>", "diw") -- delete a word
@@ -44,20 +30,20 @@ end)
 
 -- ACTIONS
 vim.keymap.set("i", "C-c", "<esc>", opts)                     -- esc in insert mode
-vim.keymap.set({ "n", "v" }, "<Leader>w", ":q<Return>", opts) -- quit
-vim.keymap.set("n", "<Leader>q", ":qa<Return>", opts)         -- quit all
--- vim.keymap.set("n", "<Leader>e", ":Ex<Return>", opts)         -- open side panel
+vim.keymap.set({ "n", "v" }, "<leader>w", ":q<Return>", opts) -- quit
+vim.keymap.set("n", "<leader>q", ":qa<Return>", opts)         -- quit all
+vim.keymap.set("n", "<Leader>e", ":Ex<Return>", opts)         -- open side panel
 
-vim.keymap.set("n", "<Leader>u", ":Lazy update<CR>", opts) -- lazy update
+vim.keymap.set("n", "<leader>u", ":Lazy update<CR>", opts)    -- lazy update
 -- replace word cursor is on (prime)
-vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- split screen: Map leader + l to perform :vert topleft split
-vim.keymap.set('n', '<leader>l', ':vert topleft split<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>l", ":vert topleft split<CR>", { noremap = true, silent = true })
 -- Move to the left split with ; + ;
-vim.keymap.set('n', ';;', '<C-w>h', { noremap = true, silent = true })
+vim.keymap.set("n", ";;", "<C-w>h", { noremap = true, silent = true })
 -- Move to the right split with ' + '
-vim.keymap.set('n', "''", '<C-w>l', { noremap = true, silent = true })
+vim.keymap.set("n", "''", "<C-w>l", { noremap = true, silent = true })
 
 -- MISC
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -65,18 +51,12 @@ vim.keymap.set("n", "gD", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
-
-
-
 -- LONG REMAPS --
-
-
-
 
 -- some remaps are lengthy and can cause clutter so we'll put them here
 
 -- INSERT
-vim.keymap.set('n', '<C-m>', function()
+vim.keymap.set("n", "<C-m>", function()
   local line = vim.api.nvim_get_current_line()
   local filetype = vim.bo.filetype
 
@@ -100,7 +80,7 @@ vim.keymap.set('n', '<C-m>', function()
 end) -- single line comment (supports //, --, and #, assumes // is the main way to comment)
 -- or just press enter bruh
 
-vim.keymap.set('v', '<C-,>', function()
+vim.keymap.set("v", "<C-,>", function()
   local filetype = vim.bo.filetype
 
   local comment_prefix = ""
@@ -112,12 +92,12 @@ vim.keymap.set('v', '<C-,>', function()
     comment_prefix = "//"
   end
 
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("I", true, false, true), 'n', false)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(comment_prefix, true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("I", true, false, true), "n", false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(comment_prefix, true, false, true), "n", false)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 end) -- multi-line comment w visual block mode (assumes // is the main way to comment)
 
-vim.keymap.set('v', '<C-.>', function()
+vim.keymap.set("v", "<C-.>", function()
   local filetype = vim.bo.filetype
 
   local comment_prefix = ""
@@ -133,30 +113,30 @@ vim.keymap.set('v', '<C-.>', function()
   end
 
   for i = 1, jump_step do
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Right>", true, false, true), 'n', false)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Right>", true, false, true), "n", false)
   end
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("x", true, false, true), 'n', false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("x", true, false, true), "n", false)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 end) -- multi-line uncomment with visual block mode (assumes // is the main way to comment)
 
 -- ACTIONS
-vim.keymap.set('n', 'z', function()
-  local current_line = vim.fn.line('.')
+vim.keymap.set("n", "z", function()
+  local current_line = vim.fn.line(".")
   local is_folded = vim.fn.foldclosed(current_line)
 
   if is_folded ~= -1 then
-    vim.cmd('normal! zo')
+    vim.cmd("normal! zo")
   else
-    vim.cmd('normal! zc')
+    vim.cmd("normal! zc")
   end
 end, { noremap = true, silent = true }) -- toggle fold for current code block
 
-vim.keymap.set('n', 'Z', function()
+vim.keymap.set("n", "Z", function()
   local foldlevel = vim.api.nvim_eval('foldlevel(".")') -- Check the current fold level
 
   if foldlevel > 0 then
-    vim.cmd('normal! zR')
+    vim.cmd("normal! zR")
   else
-    vim.cmd('normal! zM')
+    vim.cmd("normal! zM")
   end
 end, { noremap = true, silent = true }) -- toggle fold for all code blocks
