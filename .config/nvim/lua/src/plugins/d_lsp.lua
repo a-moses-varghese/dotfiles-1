@@ -13,7 +13,6 @@ return {
           "css-lsp",
           "typescript-language-server",
           "tailwindcss-language-server",
-          "eslint-lsp",
         },
       })
     end,
@@ -26,7 +25,6 @@ return {
           "lua_ls",
           "ts_ls",
           "tailwindcss",
-          "eslint",
         },
       })
     end,
@@ -35,7 +33,6 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       local lspconfig = require("lspconfig")
 
       -- systems
@@ -58,7 +55,6 @@ return {
       })
 
       -- automation
-      -- lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({
         capabilities = capabilities,
         settings = {
@@ -70,7 +66,7 @@ return {
         },
       })
 
-      -- Web Development
+      -- Web / Mobile Development
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
         filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Ensure React file types are supported
@@ -78,16 +74,6 @@ return {
         on_attach = function(client)
           -- Disable tsserver/ts_ls own formatting, let Prettier handle it
           client.server_capabilities.documentFormattingProvider = false
-        end,
-      })
-      lspconfig.eslint.setup({
-        capabilities = capabilities,
-        filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Enable for React
-        on_attach = function(client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "EslintFixAll", -- Automatically fix issues on save
-          })
         end,
       })
       lspconfig.tailwindcss.setup({ capabilities = capabilities })

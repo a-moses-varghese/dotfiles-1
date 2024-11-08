@@ -10,16 +10,16 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position 
 -- add something here
 
 -- MODIFY
-vim.keymap.set("v", "<C-x>", "ydd")            -- cut selection
-vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]]) -- copy to system clipboard (thanku prime + asbjornHaland)
-vim.keymap.set("n", "<leader>y", '"+pe')       -- paste from system clipboard
+vim.keymap.set("v", "<leader>x", [["+ydd]]) -- cut selection to sys clipboard
+vim.keymap.set("v", "<leader>y", [["+y]]) -- copy to sys clipboard (prime + asbjornHaland)
+--vim.keymap.set("n", "<leader>p", '"+pe')           -- paste from system clipboard
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")   -- move selected code in visual mode (down)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")   -- move selected code in visual mode (up)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected code in visual mode (down)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move selected code in visual mode (up)
 
 -- DELETE
 vim.keymap.set("n", "<A-d>", "diw") -- delete a word
-vim.keymap.set("n", "<A-s>", "dw")  -- delete a sentence (after cursor)
+vim.keymap.set("n", "<A-s>", "dw") -- delete a sentence (after cursor)
 
 -- VARIABLES
 
@@ -29,12 +29,12 @@ vim.keymap.set("n", "s", function() -- write file (remap s to :w)
 end)
 
 -- ACTIONS
-vim.keymap.set("i", "C-c", "<esc>", opts)                     -- esc in insert mode
+vim.keymap.set("i", "C-c", "<esc>", opts) -- esc in insert mode
 vim.keymap.set({ "n", "v" }, "<leader>w", ":q<Return>", opts) -- quit
-vim.keymap.set("n", "<leader>q", ":qa<Return>", opts)         -- quit all
-vim.keymap.set("n", "<Leader>e", ":Ex<Return>", opts)         -- open side panel
+vim.keymap.set("n", "<leader>q", ":qa<Return>", opts) -- quit all
+vim.keymap.set("n", "<Leader>e", ":Ex<Return>", opts) -- open side panel
 
-vim.keymap.set("n", "<leader>u", ":Lazy update<CR>", opts)    -- lazy update
+vim.keymap.set("n", "<leader>u", ":Lazy update<CR>", opts) -- lazy update
 -- replace word cursor is on (prime)
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 

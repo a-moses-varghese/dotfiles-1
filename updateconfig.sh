@@ -13,11 +13,11 @@ SOURCE_DIRS=(
 # Define the source files
 SOURCE_FILES=(
   "$HOME/.config/starship.toml"
-#   "$HOME/.config/file2.txt"
+#  "$HOME/.zshrc"
 #   "$HOME/.config/file3.txt"
 )
 
-DESTINATION_DIR=~/codespace/current/dotfiles-1/.config
+DESTINATION_DIR=~/Codespace/current/dotfiles-1/.config
 
 # Loop through each source folder
 for SOURCE_DIR in "${SOURCE_DIRS[@]}"; do
