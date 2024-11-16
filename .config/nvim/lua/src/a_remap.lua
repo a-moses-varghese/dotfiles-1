@@ -10,9 +10,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz") -- move upp half page + cursor position 
 -- add something here
 
 -- MODIFY
-vim.keymap.set("v", "<leader>x", [["+ydd]]) -- cut selection to sys clipboard
-vim.keymap.set("v", "<leader>y", [["+y]])   -- copy to sys clipboard (prime + asbjornHaland)
---vim.keymap.set("n", "<leader>p", '"+pe')           -- paste from system clipboard
+vim.keymap.set("v", "<leader>x", [["+ydd]])  -- cut selection to sys clipboard
+vim.keymap.set("v", "<leader>y", [["+y]])    -- copy to sys clipboard (prime + asbjornHaland)
+vim.keymap.set("n", "<leader>p", '"+pe')     -- paste from system clipboard
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected code in visual mode (down)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move selected code in visual mode (up)
@@ -45,17 +45,18 @@ vim.keymap.set("n", ";;", "<C-w>h", { noremap = true, silent = true })
 -- Move to the right split with ' + '
 vim.keymap.set("n", "''", "<C-w>l", { noremap = true, silent = true })
 
--- MISC
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "gD", vim.lsp.buf.definition, {})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+-- select all text in file
+vim.keymap.set("n", "<leader>a", "ggVG")
+
+-- LSP
+vim.keymap.set("n", "<leader>hhh", vim.lsp.buf.hover, {})
+vim.keymap.set("n", "<leader>dddd", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>aaa", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>gfii", vim.lsp.buf.format, {})
 
 -- LONG REMAPS --
 
 -- some remaps are lengthy and can cause clutter so we'll put them here
-
--- INSERT
 
 -- ACTIONS
 vim.keymap.set("n", "z", function()

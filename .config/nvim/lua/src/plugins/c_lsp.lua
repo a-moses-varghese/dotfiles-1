@@ -23,8 +23,6 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "ts_ls",
-          "tailwindcss",
         },
       })
     end,
@@ -80,38 +78,6 @@ return {
 
       -- misc
       lspconfig.lua_ls.setup({ capabilities = capabilities })
-    end,
-  },
-  -- rust
-  {
-    "rust-lang/rust.vim", -- format on save
-    ft = "rust",
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-  {
-    "saecki/crates.nvim", -- crate version completion
-    ft = { "toml" },
-    config = function()
-      require("crates").setup({
-        completion = {
-          cmp = {
-            enabled = true,
-          },
-        },
-      })
-      require("cmp").setup.buffer({
-        sources = { { name = "crates" } },
-      })
-    end,
-  },
-  -- zig
-  {
-    "ziglang/zig.vim",
-    ft = "zig",
-    init = function()
-      vim.g.zig_fmt_autosave = 1
     end,
   },
 }
