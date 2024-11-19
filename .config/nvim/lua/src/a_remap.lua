@@ -39,19 +39,19 @@ vim.keymap.set("n", "<leader>u", ":Lazy update<CR>", opts)    -- lazy update
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- split screen: Map leader + l to perform :vert topleft split
-vim.keymap.set("n", "<leader>l", ":vert topleft split<CR>", { noremap = true, silent = true })
--- Move to the left split with ; + ;
-vim.keymap.set("n", ";;", "<C-w>h", { noremap = true, silent = true })
--- Move to the right split with ' + '
-vim.keymap.set("n", "''", "<C-w>l", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>sl", ":vert topleft split<CR>", { noremap = true, silent = true })
+-- Move to the left split
+vim.keymap.set("n", "<leader>ll", "<C-w>h", { noremap = true, silent = true })
+-- Move to the right split
+vim.keymap.set("n", "<leader>lr", "<C-w>l", { noremap = true, silent = true })
 
 -- select all text in file
 vim.keymap.set("n", "<leader>a", "ggVG")
 
 -- LSP
-vim.keymap.set("n", "<leader>hhh", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "<leader>dddd", vim.lsp.buf.definition, {})
-vim.keymap.set("n", "<leader>aaa", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>ho", vim.lsp.buf.hover, {})
+vim.keymap.set("n", "<leader>de", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gfii", vim.lsp.buf.format, {})
 
 -- LONG REMAPS --
