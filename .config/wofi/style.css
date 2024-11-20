@@ -3,7 +3,7 @@
 }
 
 window {
-  background-color: rgba(59, 66, 82, 0.15);
+  background-color: rgba(59, 66, 82, 0.85);
   border-radius: 10px;
   border: 10px;
   border-color: #e1e1e1;
@@ -14,18 +14,18 @@ window #input {
   padding: 10px;
   border-radius: 10px;
   border: none;
-  background-color: rgba(32, 32, 32, 0.15);
+  background-color: rgba(32, 32, 32, 0.85);
   color: white;
 }
 
 #inner-box {
-  background-color: rgba(32, 32, 32, 0.15);
+  background-color: rgba(32, 32, 32, 0.85);
 }
 
 #outer-box {
   margin: 2px;
   /* padding: 10px; */
-  background-color: rgba(32, 32, 32, 0.15);
+  background-color: rgba(32, 32, 32, 0.85);
   border-radius: 10px;
   border: 10px;
   border-color: #e1e1e1;
@@ -37,8 +37,14 @@ window #input {
 
 #text {
   margin-left: 20px;
-  padding: 4px;
+  /* padding: 4px; */
   color: white;
+}
+
+#text:selected {
+  margin-left: 20px;
+  /* padding: 4px; */
+  color: black;
 }
 
 /* #entry:nth-child(even) {
@@ -46,14 +52,16 @@ window #input {
 } */
 
 #entry {
-  padding: 12px;
-  background-color: rgba(32, 32, 32, 0.15);
+  padding: 4px;
+  background-color: rgba(32, 32, 32, 0.85);
 }
 
 #entry:selected {
-  background-color: rgba(53, 53, 53, 0.3);
+  /* background-color: #6dd7ff; */
+  background-color: #ea6398;
+  color: black;
   /* padding: 12px; */
-  border-radius: 15px;
+  border-radius: 6px;
   border: 10px;
   border-color: #e1e1e1;
 }

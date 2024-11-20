@@ -1,11 +1,20 @@
-vim.opt.laststatus = 0        -- Disable the statusline
-vim.opt.guicursor = ""        -- fat insert cursor
+vim.opt.guicursor = "" -- fat insert cursor
+-- vim.opt.laststatus = 0        -- Disable the statusline
 
 vim.opt.number = true         -- show line number
 vim.opt.relativenumber = true -- use relative line number
 -- these highlight the line num the cursor is on
 vim.opt.cul = true
 vim.opt.culopt = "number"
+
+-- netrw relative line numbers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.opt_local.number = true
+    vim.opt_local.relativenumber = true
+  end,
+})
 
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -32,14 +41,5 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.expandtab = false -- Use tabs instead of spaces
     vim.bo.shiftwidth = 4    -- Set the width for auto-indents to 4
     vim.bo.tabstop = 4       -- Set the tab width to 4 spaces
-  end,
-})
-
--- netrw relative line numbers
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "netrw",
-  callback = function()
-    vim.opt_local.number = true
-    vim.opt_local.relativenumber = true
   end,
 })
